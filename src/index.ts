@@ -1,4 +1,4 @@
-import { closePool, initPool, query } from './db/mysql';
+import { closePool, initPool, query } from './db/mysql.js';
 
 async function main(): Promise<void> {
   initPool();

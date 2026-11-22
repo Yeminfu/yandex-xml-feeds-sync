@@ -1,12 +1,13 @@
-import mysql, {
+import mysql from 'mysql2/promise';
+import type {
+  ExecuteValues,
   Pool,
   PoolConnection,
-  RowDataPacket,
   ResultSetHeader,
-  ExecuteValues, // добавьте импорт
+  RowDataPacket,
 } from 'mysql2/promise';
 
-import { dbConfig } from '../config/db.config';
+import { dbConfig } from '../config/db.config.js';
 
 let pool: Pool | null = null;
 
@@ -16,6 +17,9 @@ let pool: Pool | null = null;
  */
 export function initPool(): Pool {
   if (pool) return pool;
+
+  console.log({dbConfig});
+  
 
   const newPool = mysql.createPool({
     ...dbConfig,
